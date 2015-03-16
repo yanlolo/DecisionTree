@@ -1,10 +1,6 @@
-// http://spark.apache.org/docs/1.2.0/mllib-decision-tree.html
-// The example below demonstrates how to load a LIBSVM data file
-// parse it as an RDD of LabeledPoint and then perform classification using a Random Forest
+// source: https://spark.apache.org/docs/1.2.0/mllib-decision-tree.html 
+// Decision Tree with Gini impurity as an impurity 
 // The test error is calculated to measure the algorithm accuracy.
-// test on Linux VM REPL
-
-
 
 import org.apache.spark.mllib.tree.DecisionTree
 import org.apache.spark.mllib.util.MLUtils
@@ -20,7 +16,7 @@ val (trainingData, testData) = (splits(0), splits(1))
 val numClasses = 2
 val categoricalFeaturesInfo = Map[Int, Int]()
 val impurity = "gini"
-val maxDepth = 5
+val maxDepth = 4    // rather than 5, easy to test
 val maxBins = 32
 
 val model = DecisionTree.trainClassifier(trainingData, numClasses, categoricalFeaturesInfo,
@@ -31,8 +27,6 @@ val labelAndPreds = testData.map { point =>
   val prediction = model.predict(point.features)
   (point.label, prediction)
 }
-
-//test error
 val testErr = labelAndPreds.filter(r => r._1 != r._2).count.toDouble / testData.count()
 println("Test Error = " + testErr)
 println("Learned classification tree model:\n" + model.toDebugString)
