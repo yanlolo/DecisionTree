@@ -1,4 +1,5 @@
 // http://spark.apache.org/docs/1.2.0/mllib-decision-tree.html
+// The example below demonstrates how to load a LIBSVM data file, parse it as an RDD of LabeledPoint and then perform classification using a Random Forest. The test error is calculated to measure the algorithm accuracy.
 // test on Linux VM REPL
 
 
