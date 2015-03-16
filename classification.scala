@@ -31,6 +31,8 @@ val labelAndPreds = testData.map { point =>
   val prediction = model.predict(point.features)
   (point.label, prediction)
 }
+
+//test error
 val testErr = labelAndPreds.filter(r => r._1 != r._2).count.toDouble / testData.count()
 println("Test Error = " + testErr)
 println("Learned classification tree model:\n" + model.toDebugString)

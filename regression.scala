@@ -33,6 +33,8 @@ val labelsAndPredictions = testData.map { point =>
   val prediction = model.predict(point.features)
   (point.label, prediction)
 }
-val testMSE = labelsAndPredictions.map{ case(v, p) => math.pow((v - p), 2)}.mean()
+
+//labelsAndPredictions ==> the predictions 
+val testMSE = labelsAndPredictions.map{ case(v, p) => math.pow((v - p), 2)}.mean() // caculate MSE
 println("Test Mean Squared Error = " + testMSE)
 println("Learned regression forest model:\n" + model.toDebugString)
