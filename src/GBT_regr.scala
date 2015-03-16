@@ -8,7 +8,7 @@ import org.apache.spark.mllib.tree.configuration.BoostingStrategy
 import org.apache.spark.mllib.util.MLUtils
 
 // Load and parse the data file.
-val data = MLUtils.loadLibSVMFile(sc, "/home/yyan/Desktop/data/sample_libsvm_data.txt")
+val data = MLUtils.loadLibSVMFile(sc, "/home/yyan/Desktop/data/housing.txt")
 // Split the data into training and test sets (30% held out for testing)
 val splits = data.randomSplit(Array(0.7, 0.3))
 val (trainingData, testData) = (splits(0), splits(1))
